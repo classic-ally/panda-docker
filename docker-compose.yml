@@ -15,6 +15,7 @@ services:
   moveit:
     image: cjbentley/panda:latest
     network_mode: host
+    privileged: true  # Allows use of the realtime kernel's PREEMPT functions
     depends_on:
       - main
     command: /bin/bash -c 'source /catkin_ws/devel/setup.bash && roslaunch --wait panda_moveit_config franka_control.launch robot_ip:=172.16.0.2 load_gripper:=true'
